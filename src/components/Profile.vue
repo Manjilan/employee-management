@@ -33,7 +33,7 @@
           <option>Software Developer</option>
           <option>Senior Software Developer</option>
           <option>Quality Assurance</option>
-          <option>technical Lead</option>
+          <option>Technical Lead</option>
           <option>Manager</option>
         </select>
         </div>
@@ -51,7 +51,7 @@ export default {
     return {
       editStatus: false,
       modal: false,
-      employee: this.employees[this.$route.params.id]
+      employee: this.employees[this.$route.params.id-1]
     }
   },
   methods: {
@@ -83,5 +83,4 @@ width: 100px;
   display: flex;
   flex-direction: column;
 }
-
 </style>
