@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-link to="/"><h1>Employee Management System</h1></router-link>
+    <router-link to="/"><img src="https://image.flaticon.com/icons/svg/2/2144.svg"/><h1>Employee Management System</h1></router-link>
     <router-view :employees="employees" @new:employee="newEmployee" @delete:info="deleteEmployeeInfo"/>
   </div>
 </template>
@@ -62,6 +62,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+img{
+  width: 50px;
 }
 a{
   text-decoration: none;
