@@ -85,6 +85,6 @@ img{
   margin: 0 2%;
 }
 label{
-  margin: 1%
+  margin: 1%;
 }
 </style>

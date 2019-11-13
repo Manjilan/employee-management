@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h3>Profile</h3>
     <div class="card" v-if="editStatus == false">
+      <h3>Profile</h3>
       <img :src="employee.avatar" />
       <p>First name: {{employee.name}}</p>
       <p>Company: {{employee.company}}</p>
@@ -17,7 +17,7 @@
       </div>
     </div>
     <form class="card" @submit.prevent="handleSubmit" v-else>
-        <h1>Edit</h1>
+        <h3>Edit Profile</h3>
         <div class="form-info">
         <label for="fullname">Full name</label>
         <input type="text" name="fullname" v-model="employee.name" value="employee.name"/>
@@ -82,5 +82,12 @@ width: 100px;
 .form-info{
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+input{
+  width: 40%;
+}
+button{
+margin-top: 2%;
 }
 </style>
