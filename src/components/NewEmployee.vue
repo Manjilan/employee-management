@@ -35,6 +35,7 @@
 
 export default {
   name: 'NewEmployee',
+  props: ['employees'],
   data () {
     return {
       employee: {
@@ -43,13 +44,15 @@ export default {
         email: "",
         contact: "",
         designation: "",
-        avatar: ""
+        avatar: "",
+        id: this.employees.length+1
       }
     }
   },
   methods: {
     handleSubmit(){
       this.$emit('new:employee', this.employee)
+      this.$router.push("/EmployeeInfo")
     }
   }
 }

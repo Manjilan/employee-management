@@ -9,7 +9,12 @@
       <p>Contact Number: {{employee.contact}}</p>
       <p>Designation: {{employee.designation}}</p>
       <button @click='editing()'>Edit</button>
-      <button @click="$emit('delete:info', employee.id)">Delete</button>
+      <button @click='deleteEmployee()'>Delete</button>
+      <div class="modal" v-show='modal'>
+        <p>Are you sure you want to delete this employee record?</p>
+        <button @click="$emit('delete:info', employee.id)">Yes</button>
+        <router-link to="/EmployeeInfo"><button>Cancel</button></router-link>
+      </div>
     </div>
     <form class="card" @submit.prevent="handleSubmit" v-else>
         <h1>Edit</h1>
@@ -41,10 +46,12 @@
 
 export default {
   name: 'Profile',
-  props: ['employee'],
+  props: ['employees'],
   data() {
     return {
-      editStatus: false
+      editStatus: false,
+      modal: false,
+      employee: this.employees[this.$route.params.id]
     }
   },
   methods: {
@@ -52,7 +59,11 @@ export default {
       this.editStatus= true
     },
     handleSubmit(){
-      this.$emit('edit:info', this.employee)
+    this.$emit('edit:employee', this.employee)
+    this.$router.push("/EmployeeInfo")
+    },
+    deleteEmployee(){
+      this.modal = true
     }
   }
 }
@@ -69,7 +80,8 @@ img{
 width: 100px;
 }
 .form-info{
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
+
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <header class="employee-list">
+  <div class="container">
+    <header class="employee-list row">
     <div class="col-1">
       <h3>Employee Name</h3>
     </div>
@@ -11,13 +11,15 @@
     <p v-if="employees.length < 1">
       Employee Record is Empty
     </p>
-    <div v-else class="row" v-for="employee in employees" :key="employee.id">
+    <div v-else v-for="employee in employees" :key="employee.id">
+    <router-link :to="{name: 'Profile', params: {id: employee.id}}" :employee='employee' class="row" @new:employee="newEmployee">
     <div class="col-1">
       <p>{{employee.name}}</p>
     </div>
     <div class="col-2">
       <p>{{employee.company}}</p>
     </div>
+    </router-link>
     </div>
   </div>
 </template>
@@ -45,13 +47,22 @@ export default {
 .employee-list, .row{
   display: flex;
   justify-content: center;
-  border: 1px solid black;
 }
 .employee-list div{
-  margin: 0 3%;
+  margin: 0;
+}
+.container{
+border: 1px solid black;
 }
 .col-1, .col-2{
   width: 50%;
   text-align: center;
 }
+.row{
+  border-bottom: 1px solid black;
+}
+.col-1{
+  border-right: 1px solid black;
+}
+
 </style>
